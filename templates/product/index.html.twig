@@ -3,6 +3,12 @@
 {% block title %}Product index{% endblock %}
 
 {% block body %}
+    {% if is_granted('ROLE_USER') is same as(false) %}
+        <a href="{{ path('app_login') }}" style="font-size:1.2rem; color:darkgreen;">Login</a>
+    {% endif %}
+    {% if is_granted('ROLE_USER') %}
+        <a href="{{ path('app_logout') }}" style="font-size:1.2rem; color:darkred;">Logout</a>
+    {% endif %}
     <h1>Product Index</h1>
     <a class="btn-custom" href="{{ path('product_new') }}">Ajouter un nouveau produit</a>
     <a class="btn-custom" href="{{ path('category_index') }}">Voir les catégories</a>
